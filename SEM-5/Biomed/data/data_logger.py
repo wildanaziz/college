@@ -9,7 +9,7 @@ from datetime import datetime
 # SERIAL_PORT = 'COM3'
 
 # LINUX SERIAL PORT
-SERIAL_PORT = '/dev/ttyUSB0' 
+SERIAL_PORT = '/dev/ttyACM0' 
 BAUD_RATE = 9600
 OUTPUT_FILE = 'data_gsr.csv'
 
