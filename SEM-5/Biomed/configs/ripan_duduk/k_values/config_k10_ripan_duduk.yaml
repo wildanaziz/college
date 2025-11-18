@@ -1,0 +1,63 @@
+dataset:
+  file_path: data_gsr_ripan_duduk_combine.csv
+  posture: duduk
+  target_dir: data/combine
+feature_extraction:
+  overlap: 0
+  samples_per_window: 300
+  window_size: 30S
+grid_search:
+  cv_folds: 5
+  enabled: false
+  param_grid:
+    metric:
+    - euclidean
+    - manhattan
+    - minkowski
+    n_neighbors:
+    - 3
+    - 5
+    - 7
+    - 10
+    - 15
+    weights:
+    - uniform
+    - distance
+  scoring: accuracy
+logging:
+  log_class_distribution: true
+  log_classification_report: true
+  log_confusion_matrix: true
+  log_feature_stats: true
+  verbose: true
+model:
+  params:
+    algorithm: auto
+    metric: minkowski
+    n_neighbors: 10
+    p: 2
+    weights: uniform
+  type: KNN
+model_saving:
+  model_dir: model/models
+  model_filename: knn_ripan_duduk_k10.pkl
+  save_local: true
+  save_wandb: true
+  scaler_dir: model/scalers
+  scaler_filename: scaler_ripan_duduk_k10.pkl
+training:
+  cross_validation:
+    cv_folds: 5
+    enabled: false
+  random_state: 42
+  stratify: true
+  test_size: 0.3
+wandb:
+  entity: null
+  notes: KNN with k=10 on ripan_duduk dataset
+  project: gsr-hydration-classification
+  tags:
+  - knn
+  - ripan
+  - duduk
+  - k10
